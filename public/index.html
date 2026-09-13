@@ -15,30 +15,32 @@
     <section class="hero" id="hero">
       <div class="eyebrow">YOUR PUBLIC DIGITAL PERSONA</div>
       <h1>인터넷은<br><span>당신을 어떤 사람</span>으로 볼까요?</h1>
-      <p class="lead">이름 하나로 시작하세요. 공개 웹·블로그·SNS·특허·논문에 흩어진 흔적을 모아 직업, 관심사, 온라인 활동 스타일을 하나의 리포트로 재구성합니다.</p>
+      <p class="lead">동명이인을 구분할 수 있도록 아는 정보만 함께 넣어주세요. 공개 웹·블로그·SNS·특허·논문에 흩어진 흔적을 모아 직업, 관심사, 온라인 활동 스타일을 하나의 리포트로 재구성합니다.</p>
       <form id="scanForm" class="search-card">
         <label class="main-input"><span>필수</span><input id="name" name="name" required maxlength="80" placeholder="이름을 입력하세요 (예: 박상훈)" autocomplete="name" /></label>
-        <button class="scan-btn" type="submit"><span>인터넷 속의 나 분석하기</span><b>→</b></button>
-        <button class="more-btn" type="button" id="moreBtn">＋ 나를 구분할 정보 추가 <small>동명이인 제거에 도움</small></button>
-        <div id="optional" class="optional hidden">
+
+        <div id="optional" class="optional always-open">
+          <div class="hint-title"><b>나를 구분할 정보</b><small>아는 만큼만 입력 · 동명이인 제거에 중요</small></div>
           <div class="grid">
             <label>나이대
               <select name="ageBand"><option value="">선택 안 함</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select>
             </label>
             <label>지역<input name="region" maxlength="80" placeholder="예: 서울, 수원" /></label>
             <label>학교<input name="school" maxlength="100" placeholder="예: ○○대학교" /></label>
-            <label>직장·회사<input name="company" maxlength="100" placeholder="예: SEMES" /></label>
+            <label>직장·회사<input name="company" maxlength="100" placeholder="예: 세메스, 삼성전자" /></label>
             <label>직업·하는 일<input name="role" maxlength="100" placeholder="예: 엔지니어, 디자이너, 교사" /></label>
             <label>평소 쓰는 닉네임<input name="nickname" maxlength="80" placeholder="예: shoon94, 상후니" /></label>
             <label class="wide">내 공개 SNS·블로그 주소 또는 아이디 <small>선택</small><input name="social" maxlength="160" placeholder="Instagram / Facebook / 네이버 블로그 / 유튜브 등, 알고 있을 때만" /></label>
-            <label class="advanced">개발자라면 GitHub ID <small>선택</small><input name="github" maxlength="50" placeholder="일반 사용자는 비워두세요" /></label>
-            <label class="advanced">추가 키워드 <small>선택</small><input name="keyword" maxlength="100" placeholder="동명이인을 구분할 단어" /></label>
+            <label class="advanced">추가 키워드 <small>선택</small><input name="keyword" maxlength="100" placeholder="예: 웨이퍼 본딩, 사진, 여행 등" /></label>
+            <label class="advanced">개발자라면 GitHub ID <small>고급 옵션</small><input name="github" maxlength="50" placeholder="일반 사용자는 비워두세요" /></label>
           </div>
           <p class="privacy">🔒 입력값은 이번 분석에만 사용합니다. 전화번호·주민번호·정확한 생년월일은 받지 않습니다.</p>
         </div>
+
         <label class="consent"><input type="checkbox" name="selfAudit" value="yes" required /><span>본인 또는 본인의 동의를 받은 사람을 검색합니다.</span></label>
+        <button class="scan-btn" type="submit"><span>인터넷 속의 나 분석하기</span><b>→</b></button>
       </form>
-      <div class="features"><span>✓ 네이버·블로그</span><span>✓ 공개 SNS</span><span>✓ 특허·논문</span><span>✓ 관심사·페르소나</span></div>
+      <div class="features"><span>✓ 특허 직접 검색</span><span>✓ 네이버·블로그</span><span>✓ 공개 SNS</span><span>✓ 관심사·페르소나</span></div>
     </section>
 
     <section id="loading" class="loading hidden">
@@ -57,7 +59,7 @@
 
       <div class="section-title"><div><span>01</span><h3>인터넷에서 보이는 페르소나</h3></div><p>공개 콘텐츠에서 반복되는 비민감 신호만 사용합니다.</p></div>
       <div class="persona-grid">
-        <article class="persona-main"><span>직업·활동 영역</span><strong id="occupation">-</strong><small>공개 경력·콘텐츠 기반 추정</small></article>
+        <article class="persona-main"><span>직업·활동 영역</span><strong id="occupation">-</strong><small>검색된 공개 기록 기반 추정</small></article>
         <article><span>관심사 TOP</span><div id="interestList" class="persona-list"></div></article>
         <article><span>온라인 활동 스타일</span><div id="styleList" class="persona-list"></div></article>
       </div>
