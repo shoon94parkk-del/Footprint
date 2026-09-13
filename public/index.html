@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0b1020" />
+  <title>Footprint — 인터넷은 나를 얼마나 알고 있을까?</title>
+  <meta name="description" content="공개 인터넷에 흩어진 나의 디지털 흔적을 한 번에 재구성해보세요." />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="aurora a1"></div><div class="aurora a2"></div>
+  <header class="topbar"><a class="brand" href="/"><span class="mark">F</span>Footprint</a><span class="pill">SELF-AUDIT · BETA</span></header>
+  <main>
+    <section class="hero" id="hero">
+      <div class="eyebrow">YOUR PUBLIC DIGITAL IDENTITY</div>
+      <h1>인터넷은<br><span>당신을 누구라고</span> 생각할까요?</h1>
+      <p class="lead">이름 하나로 시작하고, 선택 정보를 더하면 동명이인을 더 잘 걸러냅니다. Footprint가 공개 웹의 조각을 연결해 하나의 프로필처럼 보여줍니다.</p>
+      <form id="scanForm" class="search-card">
+        <label class="main-input"><span>필수</span><input id="name" name="name" required maxlength="80" placeholder="이름을 입력하세요 (예: 박상훈)" autocomplete="name" /></label>
+        <button class="scan-btn" type="submit"><span>내 흔적 스캔하기</span><b>→</b></button>
+        <button class="more-btn" type="button" id="moreBtn">＋ 선택 정보 추가 <small>정확도 향상</small></button>
+        <div id="optional" class="optional hidden">
+          <div class="grid">
+            <label>회사<input name="company" maxlength="100" placeholder="예: SEMES" /></label>
+            <label>학교<input name="school" maxlength="100" placeholder="예: ○○대학교" /></label>
+            <label>직무·직업<input name="role" maxlength="100" placeholder="예: 반도체 장비 엔지니어" /></label>
+            <label>지역<input name="region" maxlength="80" placeholder="예: 서울" /></label>
+            <label>GitHub ID<input name="github" maxlength="50" placeholder="예: shoon94parkk-del" /></label>
+            <label>추가 키워드<input name="keyword" maxlength="100" placeholder="예: wafer bonding" /></label>
+          </div>
+          <p class="privacy">🔒 입력값은 이번 검색에만 사용하며, 이 버전에서는 이메일·전화번호처럼 강한 식별정보를 받지 않습니다.</p>
+        </div>
+      </form>
+      <div class="features"><span>✓ 공개 웹</span><span>✓ 특허·논문</span><span>✓ GitHub</span><span>✓ 신뢰도 분석</span></div>
+    </section>
+
+    <section id="loading" class="loading hidden">
+      <div class="scanner"><div class="scanline"></div><div class="avatar">?</div></div>
+      <h2 id="loadingTitle">공개 인터넷을 탐색하고 있습니다</h2>
+      <p id="loadingStep">이름이 등장하는 흔적을 찾는 중…</p>
+      <div class="progress"><i id="progressBar"></i></div>
+    </section>
+
+    <section id="results" class="results hidden">
+      <div class="result-head">
+        <button class="back" id="backBtn">← 다시 검색</button>
+        <span class="pill">FOOTPRINT REPORT</span>
+      </div>
+      <div class="profile-hero">
+        <div><p class="muted">인터넷이 재구성한 당신</p><h2 id="personName"></h2><p id="narrative" class="narrative"></p><div id="keywordChips" class="chips"></div></div>
+        <div class="score-wrap"><div class="score-ring" id="scoreRing"><strong id="score">0</strong><span>/100</span></div><small>Digital Footprint</small></div>
+      </div>
+      <div class="stat-grid">
+        <article><span>본인 일치 신뢰도</span><strong id="confidence">-</strong><small>선택 정보와 검색결과의 교차 일치</small></article>
+        <article><span>관련 흔적</span><strong id="foundCount">-</strong><small>관련성 기준을 통과한 결과</small></article>
+        <article><span>노출 영역</span><strong id="categoryCount">-</strong><small>특허·개발·경력·연구 등</small></article>
+        <article><span>발견 도메인</span><strong id="domainCount">-</strong><small>서로 다른 공개 사이트</small></article>
+      </div>
+      <div class="section-title"><div><span>01</span><h3>발견된 디지털 흔적</h3></div><p>신뢰도가 높은 순으로 묶었습니다.</p></div>
+      <div id="groups" class="groups"></div>
+      <div class="section-title"><div><span>02</span><h3>인터넷에 남은 타임라인</h3></div><p>연도가 확인되는 흔적만 시간순으로 정리합니다.</p></div>
+      <div id="timeline" class="timeline"></div>
+      <div class="method-note"><b>왜 100% 확정이라고 하지 않나요?</b><p>동명이인과 재게시물이 섞일 수 있기 때문입니다. Footprint는 회사·학교·직무·지역 같은 힌트가 실제 결과에 함께 등장할수록 신뢰도를 높이고, 원문 링크를 함께 보여줍니다.</p></div>
+    </section>
+  </main>
+  <footer>Footprint · 공개 정보 셀프 오딧 도구 · 결과는 자동 추정이며 원문 확인을 권장합니다.</footer>
+  <script src="/app.js"></script>
+</body>
+</html>
