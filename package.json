@@ -1,11 +1,11 @@
 {
   "name": "footprint",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "private": true,
   "type": "commonjs",
   "scripts": {
     "start": "node start.js",
-    "test": "node --check public/app.js && node --check server2.js && node --check start.js && node --test tests/*.test.js"
+    "test": "node --check public/app.js && node --check server3.js && node --check start.js && node --test tests/*.test.js"
   },
   "engines": {"node": ">=20"}
 }
