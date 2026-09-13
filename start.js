@@ -3,6 +3,7 @@ const {scan}=require('./server3');
 
 const child=spawn(process.execPath,['server3.js'],{stdio:'inherit'});
 child.on('exit',code=>process.exit(code??1));
+spawn(process.execPath,['debug-search.js'],{stdio:'inherit'});
 
 setTimeout(async()=>{
   const started=Date.now();
