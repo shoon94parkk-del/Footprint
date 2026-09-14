@@ -15,12 +15,12 @@
     <section class="hero" id="hero">
       <div class="eyebrow">YOUR PUBLIC DIGITAL PERSONA</div>
       <h1>인터넷은<br><span>당신을 어떤 사람</span>으로 볼까요?</h1>
-      <p class="lead">동명이인을 구분할 수 있도록 아는 정보만 함께 넣어주세요. 공개 웹·블로그·SNS·특허·논문에 흩어진 흔적을 모아 직업, 관심사, 온라인 활동 스타일을 하나의 리포트로 재구성합니다.</p>
+      <p class="lead">이름을 중심으로 회사·학교·이메일·지역·닉네임 등을 각각 독립적으로 검색합니다. 입력한 조건을 모두 만족해야 하는 것이 아니라, 하나라도 연결되는 흔적을 최대한 넓게 모은 뒤 같은 사람일 가능성을 다시 계산합니다.</p>
       <form id="scanForm" class="search-card">
         <label class="main-input"><span>필수</span><input id="name" name="name" required maxlength="80" placeholder="이름을 입력하세요 (예: 박상훈)" autocomplete="name" /></label>
 
         <div id="optional" class="optional always-open">
-          <div class="hint-title"><b>나를 구분할 정보</b><small>아는 만큼만 입력 · 동명이인 제거에 중요</small></div>
+          <div class="hint-title"><b>나를 찾을 단서</b><small>모두 OR 조건 · 많이 넣을수록 검색 입구가 늘어납니다</small></div>
           <div class="grid">
             <label>나이대
               <select name="ageBand"><option value="">선택 안 함</option><option>10대</option><option>20대</option><option>30대</option><option>40대</option><option>50대</option><option>60대 이상</option></select>
@@ -30,24 +30,25 @@
             <label>직장·회사<input name="company" maxlength="100" placeholder="예: 세메스, 삼성전자" /></label>
             <label>직업·하는 일<input name="role" maxlength="100" placeholder="예: 엔지니어, 디자이너, 교사" /></label>
             <label>평소 쓰는 닉네임<input name="nickname" maxlength="80" placeholder="예: shoon94, 상후니" /></label>
-            <label class="wide">내 공개 SNS·블로그 주소 또는 아이디 <small>선택</small><input name="social" maxlength="160" placeholder="Instagram / Facebook / 네이버 블로그 / 유튜브 등, 알고 있을 때만" /></label>
+            <label class="wide">본인 이메일 <small>선택 · 공개 노출 확인용</small><input type="email" name="email" maxlength="160" placeholder="예: name@example.com" autocomplete="email" /></label>
+            <label class="wide">내 공개 SNS·블로그 주소 또는 아이디 <small>선택</small><input name="social" maxlength="180" placeholder="Instagram / Facebook / 네이버 블로그 / 유튜브 등" /></label>
             <label class="advanced">추가 키워드 <small>선택</small><input name="keyword" maxlength="100" placeholder="예: 웨이퍼 본딩, 사진, 여행 등" /></label>
-            <label class="advanced">개발자라면 GitHub ID <small>고급 옵션</small><input name="github" maxlength="50" placeholder="일반 사용자는 비워두세요" /></label>
+            <label class="advanced">개발자라면 GitHub ID <small>고급 옵션</small><input name="github" maxlength="80" placeholder="일반 사용자는 비워두세요" /></label>
           </div>
-          <p class="privacy">🔒 입력값은 이번 분석에만 사용합니다. 전화번호·주민번호·정확한 생년월일은 받지 않습니다.</p>
+          <p class="privacy">🔒 입력값은 저장하지 않습니다. 단, 이메일·닉네임 등 입력값은 공개 웹에서 노출 여부를 찾기 위한 검색어로 사용될 수 있습니다. 전화번호·주민번호·정확한 생년월일은 받지 않습니다.</p>
         </div>
 
         <input type="hidden" name="selfAudit" value="yes" />
         <p class="consent"><span>본인 또는 본인의 동의를 받은 사람을 검색하는 셀프 오딧 도구입니다.</span></p>
         <button class="scan-btn" type="submit"><span>인터넷 속의 나 분석하기</span><b>→</b></button>
       </form>
-      <div class="features"><span>✓ 특허 직접 검색</span><span>✓ 네이버·블로그</span><span>✓ 공개 SNS</span><span>✓ 관심사·페르소나</span></div>
+      <div class="features"><span>✓ OR 조건 다중 검색</span><span>✓ 특허 직접 검색</span><span>✓ 공개 웹·블로그</span><span>✓ 관심사·페르소나</span></div>
     </section>
 
     <section id="loading" class="loading hidden">
       <div class="scanner"><div class="scanline"></div><div class="avatar">?</div></div>
       <h2>공개 인터넷에서 당신을 찾고 있습니다</h2>
-      <p id="loadingStep">이름이 등장하는 공개 흔적을 찾는 중…</p>
+      <p id="loadingStep">이름과 각 단서를 따로 검색하는 중…</p>
       <div class="progress"><i id="progressBar"></i></div>
     </section>
 
@@ -66,13 +67,13 @@
       </div>
 
       <div class="stat-grid">
-        <article><span>본인 일치 신뢰도</span><strong id="confidence">-</strong><small>입력 힌트와 검색결과의 교차 일치</small></article>
+        <article><span>본인 일치 신뢰도</span><strong id="confidence">-</strong><small>독립 단서와 검색결과의 교차 일치</small></article>
         <article><span>관련 흔적</span><strong id="foundCount">-</strong><small>관련성 기준을 통과한 결과</small></article>
         <article><span>노출 영역</span><strong id="categoryCount">-</strong><small>SNS·블로그·특허·연구 등</small></article>
         <article><span>발견 도메인</span><strong id="domainCount">-</strong><small>서로 다른 공개 사이트</small></article>
       </div>
 
-      <div class="section-title"><div><span>02</span><h3>어디에서 이런 판단을 했나</h3></div><p>관련성이 높은 공개 흔적을 영역별로 정리합니다.</p></div>
+      <div class="section-title"><div><span>02</span><h3>어디에서 이런 판단을 했나</h3></div><p>각 결과마다 어떤 입력 단서가 실제로 맞았는지도 표시합니다.</p></div>
       <div id="groups" class="groups"></div>
       <div class="section-title"><div><span>03</span><h3>인터넷에 남은 타임라인</h3></div><p>연도가 확인되는 공개 흔적만 시간순으로 정리합니다.</p></div>
       <div id="timeline" class="timeline"></div>
@@ -80,6 +81,6 @@
     </section>
   </main>
   <footer>Footprint · 공개 정보 셀프 오딧 · 동명이인과 오래된 정보가 섞일 수 있으므로 신뢰도를 함께 확인하세요.</footer>
-  <script src="/app.js?v=0.2.2"></script>
+  <script src="/app.js?v=0.3.0"></script>
 </body>
 </html>
