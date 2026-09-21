@@ -10,7 +10,7 @@ test('durable Footprint project memory preserves privacy and identity contracts'
   }
   const memory=read('docs/project-memory.md');
   const guard=read('docs/regression-guardrails.md');
-  for(const token of ['selfAudit=yes','OR signals','matched hint','JINA_API_KEY']){
+  for(const token of ['selfAudit=yes','OR signals','Matched hint categories','JINA_API_KEY']){
     assert.equal(memory.includes(token),true,token);
   }
   for(const token of ['Do not repurpose','Optional identity hints remain OR','Sensitive inference','Public sources only']){
